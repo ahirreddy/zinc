@@ -237,7 +237,6 @@ if [ -n "$nailed" ] ; then
 else
   # run zinc directly
   classpath=$(zinc_classpath)
-  classpath="/home/ubuntu/zinc/target/zinc-0.3.10-SNAPSHOT.jar:/home/ubuntu/.sbt/boot/scala-2.10.5/lib/scala-library.jar:/home/ubuntu/.ivy2/cache/com.typesafe.sbt/incremental-compiler/jars/incremental-compiler-0.13.9.jar:/home/ubuntu/.sbt/boot/scala-2.10.5/lib/scala-compiler.jar:/home/ubuntu/.sbt/boot/scala-2.10.5/lib/scala-reflect.jar:/home/ubuntu/.ivy2/cache/com.typesafe.sbt/sbt-interface/jars/sbt-interface-0.13.9.jar:/home/ubuntu/.ivy2/cache/com.typesafe.sbt/compiler-interface/jars/compiler-interface-0.13.9-sources.jar:/home/ubuntu/.ivy2/cache/com.martiansoftware/nailgun-server/jars/nailgun-server-0.9.1.jar"
   exec_command \
     "$java_cmd" \
     "${java_options[@]}" \
