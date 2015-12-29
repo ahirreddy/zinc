@@ -256,7 +256,10 @@ object Settings {
     path(      "-merge", "path",               "Merge analyses, overwrite cached analysis",  (s: Settings, ap: Seq[File]) => s.copy(analysisUtil = s.analysisUtil.copy(merge = ap))),
     fileMap(   "-rebase",                      "Rebase all analysis paths (from:to,...)",    (s: Settings, m: Map[File, File]) => s.copy(analysisUtil = s.analysisUtil.copy(rebase = m))),
     fileSeqMap("-split",                       "Split analysis by source directory",         (s: Settings, m: Map[Seq[File], File]) => s.copy(analysisUtil = s.analysisUtil.copy(split = m))),
-    file(      "-reload", "cache-file",        "Reload analysis from cache file",            (s: Settings, f: File) => s.copy(analysisUtil = s.analysisUtil.copy(reload = s.analysisUtil.reload :+ f)))
+    file(      "-reload", "cache-file",        "Reload analysis from cache file",            (s: Settings, f: File) => s.copy(analysisUtil = s.analysisUtil.copy(reload = s.analysisUtil.reload :+ f))),
+
+    header("Other options:"),
+    argFile(   "-argfile", "file",                    "A text file containing compiler arguments (options and source files)")
   )
 
   val allOptions: Set[OptionDef[Settings]] = options.toSet
@@ -360,4 +363,5 @@ object Settings {
   def fileSeqMap(opt: String, desc: String, action: (Settings, Map[Seq[File], File]) => Settings) = new FileSeqMapOption[Settings](Seq(opt), desc, action)
   def header(label: String) = new HeaderOption[Settings](label)
   def dummy(opt: String, desc: String) = new DummyOption[Settings](opt, desc)
+  def argFile(opt: String, arg: String, desc: String) = new ArgumentFileOption[Settings](Seq(opt), arg, desc)
 }
