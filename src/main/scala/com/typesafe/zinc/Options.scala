@@ -78,7 +78,7 @@ extends OptionDef[Context] {
   def process(context: Context, args: Seq[String]): Parsed[Context] = {
     val rest = args.tail
     val lines = scala.io.Source.fromFile(rest.head).mkString
-    Parsed(context, lines.split("\n") ++ rest.tail)
+    Parsed(context, lines.split(" ") ++ rest.tail)
   }
 }
 
