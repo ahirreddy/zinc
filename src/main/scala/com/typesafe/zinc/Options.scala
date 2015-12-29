@@ -70,6 +70,19 @@ abstract class ArgumentOption[Value, Context] extends OptionDef[Context] {
   override def help = options.mkString(" | ") + " <" + argument + ">"
 }
 
+final case class ArgumentFileOption[Context](
+  val options: Seq[String],
+  val argument: String,
+  val description: String)
+extends OptionDef[Context] {
+  def process(context: Context, args: Seq[String]): Parsed[Context] = {
+    val rest = args.tail
+    val lines = scala.io.Source.fromFile(rest.head).mkString
+    Parsed(context, lines.split("\n") ++ rest.tail)
+  }
+}
+
+
 class BooleanOption[Context](
   val options: Seq[String],
   val description: String,
