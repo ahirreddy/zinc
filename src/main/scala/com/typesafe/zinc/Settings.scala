@@ -258,7 +258,7 @@ object Settings {
     file(      "-reload", "cache-file",        "Reload analysis from cache file",            (s: Settings, f: File) => s.copy(analysisUtil = s.analysisUtil.copy(reload = s.analysisUtil.reload :+ f))),
 
     header("Other options:"),
-    argFile(   "-argfile", "file",                    "A text file containing compiler arguments (options and source files)")
+    argFile(   "-argfile", "file",             "A text file containing compiler arguments (options and source files)")
   )
 
   val allOptions: Set[OptionDef[Settings]] = options.toSet
