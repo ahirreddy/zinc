@@ -172,7 +172,7 @@ function zinc_classpath {
   if $cygwin ; then
     cp="$(cygpath --windows --path "$cp")"
   fi
-  echo $cp
+  echo "$CLASSPATH:$cp"
 }
 
 # get platform-specific path
